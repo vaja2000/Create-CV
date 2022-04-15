@@ -1,0 +1,90 @@
+<header>
+    <h1>პერსონალური მონაცემები</h1>
+</header>
+<form  [formGroup]="personalData"
+(submit)="onSubmit()">
+    <!-- firstname & lastname -->
+    <section class="N1-SEC">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>სახელი</mat-label>
+            <input matInput type="text"
+            formControlName="firstName">
+            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>გვარი</mat-label>
+            <input matInput type="text"
+            formControlName="lastName">
+            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+        </mat-form-field>
+    </section>
+    <!-- contacts info -->
+    <section class="N2-SEC"
+    formGroupName="contacts">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>ელფოსტა</mat-label>
+            <input type="email" matInput  
+            [errorStateMatcher]="matcher"
+            formControlName="email"
+            placeholder="მაგ: pat@example.com">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !personalData.hasError('required')">
+              გთხოვთ შეიყვანოთ სწორი ელფოსტის მისამართი!
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              ველის შევსება სავალდებულოა!
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>ტელეფონი</mat-label>
+            <span matPrefix>+995 &nbsp;</span>
+            <input type="tel" matInput maxlength="9" placeholder="555-555-1234"
+            formControlName="phone">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+        </mat-form-field>
+    </section>
+    <!-- address field -->
+    <section class="N3-SEC" formGroupName="address">
+        <mat-form-field appearance="fill">
+            <mat-label>ქალაქი/მუნიციპალიტეტი</mat-label>
+            <mat-select formControlName="city_municipality">
+              <mat-optgroup *ngFor="let group of cities_Municipalities"
+              [label]="group.name"
+              [disabled]="group.disabled">
+                <mat-option *ngFor="let city of group.list"
+                [value]="city">
+                  {{city}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>კონკრეტული მისამათი</mat-label>
+            <input matInput type="text"
+            formControlName="specific_address">
+            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+        </mat-form-field>
+    </section>
+    <!-- upload photo -->
+    <section class="N4-SEC">
+      <label for="image">ფოტოს დამატება</label>
+      <input id="image" type="file"  
+      formControlName="photo"
+      (change)="onUploadPhoto($event)">
+      <aside class="photo">
+        <img [src]="user_IMG">
+      </aside>
+    </section>
+    <!-- submit -->
+    <section class="submit">
+        <ng-template #active>
+            <button mat-raised-button color="warn"
+            [disabled]="personalData.invalid"
+            >შენახვა</button>
+        </ng-template>
+        <button type="button" mat-raised-button color="primary"
+        routerLink="/education"
+        *ngIf="next; else active"
+        >შემდეგი</button>
+    </section>
+</form>

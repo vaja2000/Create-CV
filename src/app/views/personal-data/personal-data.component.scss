@@ -1,0 +1,101 @@
+h1, mat-label, input, mat-error, mat-option,
+mat-select, button, label {
+    font-family: BPG Nino Mtavruli;
+}
+input {
+    color: #ffff1a;
+}
+mat-error {
+    color: #b30000;
+}
+header {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    h1 {
+        font-size: 30px;
+        color: #FFF;
+    }
+}
+form {
+    width: 550px;
+    padding: 20px 30px;
+    background-color: rgb(179, 209, 255, 0.1);
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    animation-name: shadowShow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    mat-form-field {
+        margin-top: 10px;
+    }
+    .N1-SEC {
+        display: flex;
+        justify-content: space-between;
+    }
+    .N2-SEC {
+        mat-form-field {
+            width: 100%;
+            mat-icon,span {
+                color: #FFF;
+            }
+        }
+    }
+    .N3-SEC {
+        display: flex;
+        justify-content: space-between;
+    }
+    .N4-SEC {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        input {
+            display: none;
+        }
+        label {
+            width: 150px;
+            height: 50px;
+            background-color: #008000;
+            color: #FFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0px 3px 1px #262626;
+            transition: .2s linear;
+            cursor: pointer;
+            &:hover {
+                background-color: #00b300;
+            }
+        }
+        aside {
+            width: 150px;
+            height: 180px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    .submit {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        button {
+            width: 70%;
+            height: 45px;
+            font-size: 20px;
+            color: #FFF;
+        }
+    }
+    @keyframes shadowShow {
+        0% { box-shadow: 0px -2px 8px 1px #00001a; }
+        25% { box-shadow: -2px -2px 8px 1px #00001a; }
+        50% { box-shadow: -2px 2px 8px 1px #00001a; }
+        75% { box-shadow: 2px 2px 8px 1px #00001a; }
+        100% { box-shadow: 2px -2px 8px 1px #00001a; }
+    }
+}

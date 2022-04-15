@@ -1,0 +1,49 @@
+<header>
+    <h1>ენები</h1>
+</header>
+<form [formGroup]="languages"
+(submit)="onSubmit()">
+    <button type="button" mat-raised-button class="addProgram" 
+    [matBadge]="langQuantity_BADGE" matBadgeColor="warn"
+    (click)="addNewLanguage()">
+        ენის დამატება 
+        <mat-icon>add_circle</mat-icon>
+    </button>
+    <article formArrayName="lang">
+        <div *ngFor="let language of getLanguage().controls; let langIndex=index">
+            <div class="langField"
+            [formGroupName]="langIndex">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>ენა</mat-label>
+                    <input matInput type="text" formControlName="language">
+                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                </mat-form-field>
+                <button type="button" mat-mini-fab aria-label="Example icon button with a menu icon" 
+                (click)="deleteLanguage(langIndex)"> 
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <mat-form-field appearance="fill">
+                    <mat-label>დონე</mat-label>
+                    <mat-select formControlName="level">
+                        <mat-option *ngFor="let level of levels"
+                        [value]="level">
+                          {{level}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </article>
+    <!-- submit field -->
+    <section class="submit">
+        <ng-template #active>
+            <button mat-raised-button color="warn"
+            [disabled]="languages.invalid || !langQuantity_BADGE"
+            >შენახვა</button>
+        </ng-template>
+        <button type="button" mat-raised-button color="primary"
+        *ngIf="next; else active"
+        routerLink="/programs"
+        >შემდეგი</button>
+    </section>
+</form>

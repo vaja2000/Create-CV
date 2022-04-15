@@ -1,0 +1,25 @@
+<header>
+    <h1>მართვის მოწმობა</h1>
+</header>
+<form [formGroup]="license"
+      (submit)="onSubmit()">
+    <section class="example-section checkBox">
+        <p *ngFor="let category of categories"
+        ><mat-checkbox color="primary" 
+        [formControlName]="category">
+        {{category}}
+    </mat-checkbox></p>
+    </section>
+    <!-- submit field -->
+    <section class="submit">
+        <ng-template #active>
+            <button mat-raised-button color="warn"
+            [disabled]="license.invalid"
+            >შენახვა</button>
+        </ng-template>
+        <button type="button" mat-raised-button color="primary"
+        *ngIf="next; else active"
+        routerLink="/user-data"
+        >შემდეგი</button>
+    </section>
+</form>

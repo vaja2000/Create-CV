@@ -1,0 +1,139 @@
+<div class="logout">
+    <button mat-raised-button color="warn"
+    (click)="logout()"
+    >გასვლა</button>
+</div>
+<header>
+    <h1>ჩემი მონაცემები</h1>
+</header>
+<ng-template #spinnerBox>
+    <mat-progress-spinner mode="indeterminate" color="warn"></mat-progress-spinner>
+</ng-template>
+<div class="container"
+*ngIf="spinner; else spinnerBox">
+    <div class="cover">
+        <h1>{{user[0].firstName}} {{user[0].lastName}}</h1>
+        <section>
+            <div>
+                <h3><mat-icon>alternate_email</mat-icon> {{user[0].contacts.email}}</h3>
+                <h3><mat-icon>phone_iphone</mat-icon>+995 {{user[0].contacts.phone}}</h3>
+            </div>
+            <div>
+                <h3><mat-icon>place</mat-icon> {{user[0].address.city_municipality}}, {{user[0].address.specific_address}}</h3>
+            </div>
+        </section>
+    </div>
+    <div class="user_photo">
+        <img [src]="user[0].photo">
+    </div>
+    <!-- education field -->
+    <div class="education">
+        <div class="title">
+            <h2><mat-icon>school</mat-icon> განათლება</h2>
+        </div>
+        <div class="edu_content">
+            <div *ngFor="let education of user[1].edu; let i=index"
+            matBadge="{{i+1}}" matBadgePosition="before" matBadgeColor="warn">
+                <section>
+                    <h4>სასწავლებლის დასახელება:</h4>
+                    <h4>ფაკულტეტი:</h4>
+                    <h4>მიმართულება:</h4>
+                    <h4>სწავლის პერიოდი:</h4>
+                </section>
+                <section>
+                    <h5>{{education.univercity_Collage}}</h5>
+                    <h5>{{education.faculty}}</h5>
+                    <h5>{{education.speciality}}</h5>
+                    <h5>11/02/2020 - 11/03/2021</h5>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- work experience field -->
+    <div class="work_experience">
+        <div class="title">
+            <h2><mat-icon>work</mat-icon> სამუშაო გამოცდილება</h2>
+        </div>
+        <div class="work-experience_content">
+            <div *ngFor="let item of user[2].job; let i=index"
+            matBadge="{{i+1}}" matBadgePosition="before" matBadgeColor="warn" class="job">
+                <section>
+                    <div><h4>ორგანიზაციის დასახელება:</h4><h5>{{item.company}}</h5></div>
+                    <div><h4>პოზიციის დასახელება:</h4><h5>{{item.position}}</h5></div>
+                    <div><h4>სამუშაო პერიოდი:</h4><h5>11/02/2020 - 11/03/2021</h5></div>
+                    <div>
+                        <h4>მოკლე აღწერა:</h4>
+                        <span>{{item.shortDescription}}</span>
+                    </div>
+                    <div>
+                        <h4>მიღწევები:</h4>
+                        <div class="achievements">
+                            <article *ngFor="let achievement of item.achievements">
+                                <div><h4>პოზიციის დასახელება:</h4><h5>{{achievement.Position}}</h5></div>
+                                <div><h4>სამუშაო პერიოდი:</h4><h5>11/02/2020 - 11/03/2021</h5></div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- language field -->
+    <div class="language">
+        <div class="title">
+            <h2><mat-icon>language</mat-icon> ენები</h2>
+        </div>
+        <div class="language_content">
+            <div *ngFor="let lang of user[3].lang; let i = index"
+            matBadge="{{i+1}}" matBadgePosition="before" matBadgeColor="warn" class="lang">
+                <section>
+                    <div><h4>ენა:</h4><h5>{{lang.language}}</h5></div>
+                    <div><h4>ცოდნის დონე:</h4><h5>{{lang.level}}</h5></div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- computer programs field -->
+    <div class="comp-programs"
+    *ngIf="user[4].prog.length !== 0">
+        <div class="title">
+            <h2><mat-icon class="mat-18">computer</mat-icon>კომპიუტერული პროგრამები</h2>
+        </div>
+        <div class="program-content">
+            <div *ngFor="let item of user[4].prog; let i = index"
+            matBadge="{{i+1}}" matBadgePosition="before" matBadgeColor="warn" class="prog">
+                <section>
+                    <div><h4>პროგრამა:</h4><h5>{{item.program}}</h5></div>
+                    <div><h4>ცოდნის დონე:</h4><h5>{{item.level}}</h5></div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- driver license field -->
+    <div class="driver-license"
+    *ngIf="driverLicense_CATEGORY.length !== 0">
+        <div class="title">
+            <h2><mat-icon class="mat-18">drive_eta</mat-icon>მართვის მოწმობა</h2>
+        </div>
+        <div class="license">
+            <div class="top">
+                <h1>GE</h1>
+                <span>მართვის მოწმობა</span>
+            </div>
+            <div class="bottom">
+                <div class="left">
+                    <img [src]="user[0].photo">
+                </div>
+                <div class="right">
+                    <h4>1. {{user[0].lastName}}</h4>
+                    <h4>2. {{user[0].firstName}}</h4>
+                    <h4>3. 11/10/2000</h4>
+                    <h4>4. თბილისი, გლდანი ა მიკრო</h4>
+                    <h4>5. 
+                        <span *ngFor="let item of driverLicense_CATEGORY">{{item}}</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

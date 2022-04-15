@@ -1,0 +1,29 @@
+div {
+    width: 100%;
+    min-height: 100%;
+    background-image: url(https://images.pexels.com/photos/4004374/pexels-photo-4004374.jpeg?cs=srgb&dl=pexels-evie-shaffer-4004374.jpg&fm=jpg);
+}
+
+::ng-deep .mat-form-field-flex {
+    background-color: rgb(0, 12, 26, 0.4)!important;
+}
+::ng-deep.mat-form-field-label,
+::ng-deep.mat-select-arrow {
+    color: #FFF;
+}
+::ng-deep .mat-optgroup-label {
+    font-family: BPG Nino Mtavruli;
+    color: #00b300;
+}
+::ng-deep .mat-option-text {
+    font-size: 13px;
+}
+::ng-deep .mat-select-min-line {
+    color: #ffff1a;
+}
+::ng-deep svg {
+    fill: #FFF;
+}
+::ng-deep .mat-checkbox-frame {
+    border: 2px solid #FFF;
+}

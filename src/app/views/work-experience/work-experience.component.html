@@ -1,0 +1,100 @@
+<header>
+    <h1>სამუშაო გამოცდილება</h1>
+</header>
+<form [formGroup]="jobs"(submit)="onSubmit()">
+    <section class="content">
+        <button type="button" mat-raised-button class="addjob" [matBadge]="jobQuantity_BADGE" matBadgeColor="warn"
+        (click)="addNewJob()"
+        >სამუშაოს დამატება <mat-icon>add_circle</mat-icon></button>
+        <article formArrayName="job">
+            <div *ngFor="let job of getJob().controls; let jobIndex=index">
+                <div class="work-Experience"
+                [formGroupName]="jobIndex">
+                <!-- Information on work experience -->
+                <section class="N1-SEC">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>ორგანიზაციის დასახელება</mat-label>
+                        <input matInput type="text"
+                        formControlName="company">
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>პოზიციის დასახელება</mat-label>
+                        <input matInput type="text"
+                        formControlName="position">
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>მოკლე აღწერა</mat-label>
+                        <textarea matInput placeholder="ჩემი სამუშაოს შესახებ..."
+                        formControlName="shortDescription"></textarea>
+                    </mat-form-field>
+                </section>
+                <!-- Working period -->
+                <section class="N2-SEC">
+                    <mat-form-field appearance="fill">
+                        <mat-label>სამუშაო პერიოდი</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                          <input formControlName="startTime" matStartDate placeholder="დაწ: დრო">
+                          <input formControlName="endTime" matEndDate placeholder="დამ: დრო">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                    <button type="button" mat-raised-button
+                    (click)="addNewAchivement(jobIndex)"
+                    >მიღწევები</button>
+                </section>
+                <!-- information on getAchivements -->
+                <section class="getAchivements" formArrayName="achievements">
+                    <div class="achivement"
+                    *ngFor="let achive of getAchivements(jobIndex).controls; let achiveIndex=index">
+                        <div [formGroupName]="achiveIndex">
+                            <section class="acivementPosition">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>პოზიციის დასახელება</mat-label>
+                                    <input matInput type="text"
+                                    formControlName="Position">
+                                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                                </mat-form-field>
+                            </section>
+                            <section class="achivementWorkTime">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>სამუშაო პერიოდი</mat-label>
+                                    <mat-date-range-input [rangePicker]="picker">
+                                      <input formControlName="start" matStartDate placeholder="დაწ: დრო">
+                                      <input formControlName="end" matEndDate placeholder="დამ: დრო">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </mat-form-field>
+                                <button type="button" mat-mini-fab aria-label="Example icon button with a menu icon"
+                                (click)="deleteAchivement(jobIndex, achiveIndex)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <section class="N3-SEC">
+                        <button mat-raised-button class="deleteProfession" 
+                        (click)="deleteJob(jobIndex)"
+                        >პროფესიის ამოშლა <mat-icon>delete</mat-icon></button>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </section>
+    <!-- submit field -->
+    <section class="submit">
+        <ng-template #active>
+            <button mat-raised-button color="warn"
+            [disabled]="jobs.invalid || !jobQuantity_BADGE"
+            >შენახვა</button>
+        </ng-template>
+        <button type="button" mat-raised-button color="primary"
+        *ngIf="next; else active"
+        routerLink="/language"
+        >შემდეგი</button>
+    </section>
+</form>

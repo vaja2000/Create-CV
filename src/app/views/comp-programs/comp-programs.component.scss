@@ -1,0 +1,66 @@
+h1, mat-label, input, mat-error, mat-option,
+mat-select, button {
+    font-family: BPG Nino Mtavruli;
+}
+input {
+    color: #ffff1a;
+}
+mat-error {
+    color: #b30000;
+}
+header {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    h1 {
+        font-size: 30px;
+        color: #FFF;
+    }
+}
+form {
+    width: 550px;
+    padding: 20px 30px;
+    background-color: rgb(179, 209, 255, 0.1);
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    animation-name: shadowShow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    mat-form-field {
+        margin-top: 10px;
+    }
+    .addProgram {
+        background-color: #00802b;
+        color: #FFF;
+    }
+    .progField {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        border-bottom: 2px solid #FFF;
+        align-items: center;
+        button {
+            background-color: #b30000;
+        }
+    }
+    .submit {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        button {
+            width: 70%;
+            height: 45px;
+            font-size: 20px;
+            color: #FFF;
+        }
+    }
+    @keyframes shadowShow {
+        0% { box-shadow: 0px -2px 8px 1px #00001a; }
+        25% { box-shadow: -2px -2px 8px 1px #00001a; }
+        50% { box-shadow: -2px 2px 8px 1px #00001a; }
+        75% { box-shadow: 2px 2px 8px 1px #00001a; }
+        100% { box-shadow: 2px -2px 8px 1px #00001a; }
+    }
+}

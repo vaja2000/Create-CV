@@ -1,0 +1,49 @@
+<header>
+    <h1>კომპიუტერული პროგრამები</h1>
+</header>
+<form [formGroup]="programs"
+      (submit)="onSubmit()">
+    <button type="button" mat-raised-button class="addProgram" 
+    [matBadge]="programQuantity_BADGE" matBadgeColor="warn"
+    (click)="addNewProgram()">
+         დაამატე პროგრამა 
+        <mat-icon>add_circle</mat-icon>
+    </button>
+    <article formArrayName="prog">
+        <div *ngFor="let program of getProgram().controls; let progIndex=index">
+            <div class="progField"
+            [formGroupName]="progIndex">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>პროგრამა</mat-label>
+                    <input matInput type="text" formControlName="program">
+                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                </mat-form-field>
+                <button type="button" mat-mini-fab aria-label="Example icon button with a menu icon" 
+                (click)="deleteProgram(progIndex)"> 
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <mat-form-field appearance="fill">
+                    <mat-label>დონე</mat-label>
+                    <mat-select formControlName="level">
+                        <mat-option *ngFor="let level of levels"
+                        [value]="level">
+                          {{level}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </article>
+    <!-- submit field -->
+    <section class="submit">
+        <ng-template #active>
+            <button mat-raised-button color="warn"
+            [disabled]="programs.invalid"
+            >შენახვა</button>
+        </ng-template>
+        <button type="button" mat-raised-button color="primary"
+        *ngIf="next; else active"
+        routerLink="/license"
+        >შემდეგი</button>
+    </section>
+</form>

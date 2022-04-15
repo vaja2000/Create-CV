@@ -1,0 +1,69 @@
+<header>
+    <h1>განათლება</h1>
+</header>
+<form [formGroup]="educationForm"
+(submit)="onSubmit()">
+    <section class="content">
+        <button type="button" mat-raised-button class="addEdu" [matBadge]="eduQuantity_BADGE" matBadgeColor="warn" 
+        (click)="addNewEducation()"
+        >პროფესიის დამატება <mat-icon>add_circle</mat-icon></button>
+        <article formArrayName="edu">
+            <div *ngFor="let edu of getEducation().controls; let eduIndex=index">
+                <div class="professions"
+                [formGroupName]="eduIndex">
+                <!-- information on the profession -->
+                    <section class="N1-SEC">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>უნივერსიტეტი/კოლეჯი</mat-label>
+                            <input matInput type="text"
+                            formControlName="univercity_Collage">
+                            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>ფაკულტეტი</mat-label>
+                            <input matInput type="text"
+                            formControlName="faculty">
+                            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>მიმართულება</mat-label>
+                            <input matInput type="text"
+                            formControlName="speciality">
+                            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                        </mat-form-field>
+                    </section>
+                    <!-- information on the study period -->
+                    <section class="N2-SEC">
+                        <mat-form-field appearance="fill">
+                            <mat-label>სწავლის პერიოდი</mat-label>
+                            <mat-date-range-input [rangePicker]="picker">
+                              <input formControlName="startTime" matStartDate placeholder="დაწ: დრო">
+                              <input formControlName="endTime" matEndDate placeholder="დამ: დრო">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                        </mat-form-field>
+                    </section>
+                    <!-- delete profession field -->
+                    <section class="N3-SEC">
+                        <button mat-raised-button class="deleteProfession" 
+                        (click)="deleteEducation(eduIndex)"
+                        >პროფესიის ამოშლა <mat-icon>delete</mat-icon></button>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </section>
+    <!-- submit field -->
+    <section class="submit">
+        <ng-template #active>
+            <button mat-raised-button color="warn"
+            [disabled]="educationForm.invalid || !eduQuantity_BADGE"
+            >შენახვა</button>
+        </ng-template>
+        <button type="button" mat-raised-button color="primary"
+        *ngIf="next; else active"
+        routerLink="/work-experience"
+        >შემდეგი</button>
+    </section>
+</form>
