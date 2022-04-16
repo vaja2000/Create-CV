@@ -110,6 +110,11 @@ export class PersonalDataComponent implements OnInit {
         'city_municipality': new FormControl(null, [ Validators.required ]),
         'specific_address': new FormControl(null, [ Validators.required ])
       }),
+      'dateOfBirth': new FormGroup({
+        'day': new FormControl(null, [ Validators.required ]),
+        'month': new FormControl(null, [ Validators.required ]),
+        'year': new FormControl(null, [ Validators.required ])
+      }),
       'photo': new FormControl(null, [ Validators.required ])
     })
     this.emailFormControl = this.personalData.get('contacts')?.get('email')

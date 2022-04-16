@@ -43,6 +43,29 @@
             <mat-error>ველის შევსება აუცილებელია!</mat-error>
         </mat-form-field>
     </section>
+    <section class="N5-SEC" formGroupName="dateOfBirth">
+      <mat-form-field appearance="fill">
+        <mat-label>დღე</mat-label>
+        <mat-select disableRipple
+        formControlName="day">
+          <mat-option value="1"></mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>თვე</mat-label>
+        <mat-select disableRipple
+        formControlName="month">
+          <mat-option value="1"></mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>წელი</mat-label>
+        <mat-select disableRipple
+        formControlName="year">
+          <mat-option value="1"></mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
     <!-- address field -->
     <section class="N3-SEC" formGroupName="address">
         <mat-form-field appearance="fill">

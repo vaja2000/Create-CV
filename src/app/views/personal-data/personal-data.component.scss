@@ -80,6 +80,13 @@ form {
             }
         }
     }
+    .N5-SEC {
+        display: flex;
+        justify-content: space-between;
+        mat-form-field {
+            width: calc((100% / 3) - 10px);
+        }
+    }
     .submit {
         display: flex;
         justify-content: center;
