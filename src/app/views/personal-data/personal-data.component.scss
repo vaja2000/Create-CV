@@ -1,5 +1,5 @@
 h1, mat-label, input, mat-error, mat-option,
-mat-select, button, label {
+mat-select, button, label,h3 {
     font-family: BPG Nino Mtavruli;
 }
 input {
@@ -81,10 +81,21 @@ form {
         }
     }
     .N5-SEC {
-        display: flex;
-        justify-content: space-between;
-        mat-form-field {
-            width: calc((100% / 3) - 10px);
+        h3 {
+            margin: 0;
+            color: #00b300;
+        }
+        section {
+            display: flex;
+            justify-content: space-between;
+            mat-form-field {
+                width: calc((100% / 3) - 10px);
+            }
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-inner-out-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
         }
     }
     .submit {

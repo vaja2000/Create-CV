@@ -11,6 +11,17 @@ export class EducationComponent implements OnInit {
   educationForm!:FormGroup;
   eduQuantity_BADGE:any = null
   next:boolean = false
+  date:any = {
+    day:[
+      1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+      17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+    ],
+    month:[
+      "იანვარი","თებერვალი","მარტი","აპრილი",
+      "მაისი","ივნისი","ივლისი","აგვისტო",
+      "სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"
+    ]
+  }
 
   constructor(
     private fBuilder:FormBuilder,
@@ -31,8 +42,11 @@ export class EducationComponent implements OnInit {
        univercity_Collage: [ null, Validators.required ],
        faculty: [ null, Validators.required ],
        speciality: [ null, Validators.required ],
-       startTime: [ null, Validators.required ],
-       endTime: [ null, Validators.required ]
+       date: {
+         day: [ null, Validators.required ],
+         month: [null, Validators.required ],
+         year: [ null, Validators.required ]
+       }
      })
    }
    

@@ -43,28 +43,39 @@
             <mat-error>ველის შევსება აუცილებელია!</mat-error>
         </mat-form-field>
     </section>
+    <!-- date of birth -->
     <section class="N5-SEC" formGroupName="dateOfBirth">
-      <mat-form-field appearance="fill">
-        <mat-label>დღე</mat-label>
-        <mat-select disableRipple
-        formControlName="day">
-          <mat-option value="1"></mat-option>
-        </mat-select>
+      <h3>დაბადების თარიღი</h3>
+      <section>
+        <mat-form-field appearance="fill">
+          <mat-label>დღე</mat-label>
+          <mat-select disableRipple
+          formControlName="day">
+            <mat-option *ngFor="let num of date.day"
+            [value]="num">
+            {{num}}
+            </mat-option>
+          </mat-select>
+          <mat-error>ველის შევსება აუცილებელია!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>თვე</mat-label>
+          <mat-select disableRipple
+          formControlName="month">
+            <mat-option *ngFor="let month of date.month"
+            [value]="month">
+            {{month}}
+            </mat-option>
+          </mat-select>
+          <mat-error>ველის შევსება აუცილებელია!</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>წელი</mat-label>
+          <input matInput type="number"
+          formControlName="year">
+          <mat-error>ველის შევსება აუცილებელია!</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>თვე</mat-label>
-        <mat-select disableRipple
-        formControlName="month">
-          <mat-option value="1"></mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>წელი</mat-label>
-        <mat-select disableRipple
-        formControlName="year">
-          <mat-option value="1"></mat-option>
-        </mat-select>
-      </mat-form-field>
+      </section>
     </section>
     <!-- address field -->
     <section class="N3-SEC" formGroupName="address">
