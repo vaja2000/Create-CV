@@ -32,15 +32,68 @@
                 </section>
                 <!-- Working period -->
                 <section class="N2-SEC">
-                    <mat-form-field appearance="fill">
-                        <mat-label>სამუშაო პერიოდი</mat-label>
-                        <mat-date-range-input [rangePicker]="picker">
-                          <input formControlName="startTime" matStartDate placeholder="დაწ: დრო">
-                          <input formControlName="endTime" matEndDate placeholder="დამ: დრო">
-                        </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-date-range-picker #picker></mat-date-range-picker>
-                    </mat-form-field>
+                    <h3>სამუშაოს დაწყების თარიღი</h3>
+                    <section>
+                      <mat-form-field appearance="fill">
+                        <mat-label>დღე</mat-label>
+                        <mat-select disableRipple
+                        formControlName="startDay">
+                          <mat-option *ngFor="let num of date.day"
+                          [value]="num">
+                          {{num}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>თვე</mat-label>
+                        <mat-select disableRipple
+                        formControlName="startMonth">
+                          <mat-option *ngFor="let month of date.month"
+                          [value]="month">
+                          {{month}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>წელი</mat-label>
+                        <input matInput type="number"
+                        formControlName="startYear">
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                      </mat-form-field>
+                    </section>
+                    <h3>სამუშაოს დამთავრების თარიღი</h3>
+                    <section>
+                      <mat-form-field appearance="fill">
+                        <mat-label>დღე</mat-label>
+                        <mat-select disableRipple
+                        formControlName="endDay">
+                          <mat-option *ngFor="let num of date.day"
+                          [value]="num">
+                          {{num}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>თვე</mat-label>
+                        <mat-select disableRipple
+                        formControlName="endMonth">
+                          <mat-option *ngFor="let month of date.month"
+                          [value]="month">
+                          {{month}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>წელი</mat-label>
+                        <input matInput type="number"
+                        formControlName="endYear">
+                        <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                      </mat-form-field>
+                    </section>
                     <button type="button" mat-raised-button
                     (click)="addNewAchivement(jobIndex)"
                     >მიღწევები</button>
@@ -59,19 +112,74 @@
                                 </mat-form-field>
                             </section>
                             <section class="achivementWorkTime">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>სამუშაო პერიოდი</mat-label>
-                                    <mat-date-range-input [rangePicker]="picker">
-                                      <input formControlName="start" matStartDate placeholder="დაწ: დრო">
-                                      <input formControlName="end" matEndDate placeholder="დამ: დრო">
-                                    </mat-date-range-input>
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-date-range-picker #picker></mat-date-range-picker>
-                                </mat-form-field>
-                                <button type="button" mat-mini-fab aria-label="Example icon button with a menu icon"
-                                (click)="deleteAchivement(jobIndex, achiveIndex)">
+                                <h3>დაწყების თარიღი</h3>
+                                <section>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>დღე</mat-label>
+                                    <mat-select disableRipple
+                                    formControlName="startDay">
+                                      <mat-option *ngFor="let num of date.day"
+                                      [value]="num">
+                                      {{num}}
+                                      </mat-option>
+                                    </mat-select>
+                                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>თვე</mat-label>
+                                    <mat-select disableRipple
+                                    formControlName="startMonth">
+                                      <mat-option *ngFor="let month of date.month"
+                                      [value]="month">
+                                      {{month}}
+                                      </mat-option>
+                                    </mat-select>
+                                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>წელი</mat-label>
+                                    <input matInput type="number"
+                                    formControlName="startYear">
+                                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                                  </mat-form-field>
+                                </section>
+                                <h3>დამთავრების თარიღი</h3>
+                                <section>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>დღე</mat-label>
+                                    <mat-select disableRipple
+                                    formControlName="endDay">
+                                      <mat-option *ngFor="let num of date.day"
+                                      [value]="num">
+                                      {{num}}
+                                      </mat-option>
+                                    </mat-select>
+                                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>თვე</mat-label>
+                                    <mat-select disableRipple
+                                    formControlName="endMonth">
+                                      <mat-option *ngFor="let month of date.month"
+                                      [value]="month">
+                                      {{month}}
+                                      </mat-option>
+                                    </mat-select>
+                                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>წელი</mat-label>
+                                    <input matInput type="number"
+                                    formControlName="endYear">
+                                    <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                                  </mat-form-field>
+                                </section>
+                                <div class="deleteAchivement">
+                                    <button type="button" mat-mini-fab aria-label="Example icon button with a menu icon"
+                                    (click)="deleteAchivement(jobIndex, achiveIndex)">
                                     <mat-icon>delete</mat-icon>
                                 </button>
+                                </div>
                             </section>
                         </div>
                     </div>
@@ -79,7 +187,7 @@
                 <section class="N3-SEC">
                         <button mat-raised-button class="deleteProfession" 
                         (click)="deleteJob(jobIndex)"
-                        >პროფესიის ამოშლა <mat-icon>delete</mat-icon></button>
+                        >ველის ამოშლა <mat-icon>delete</mat-icon></button>
                     </section>
                 </div>
             </div>

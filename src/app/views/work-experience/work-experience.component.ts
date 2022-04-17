@@ -11,6 +11,17 @@ export class WorkExperienceComponent implements OnInit {
   jobs!:FormGroup
   jobQuantity_BADGE:any = null
   next:boolean = false
+  date:any = {
+    day:[
+      1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+      17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+    ],
+    month:[
+      "იანვარი","თებერვალი","მარტი","აპრილი",
+      "მაისი","ივნისი","ივლისი","აგვისტო",
+      "სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"
+    ]
+  }
 
   constructor( 
     private fBuilder:FormBuilder,
@@ -32,8 +43,12 @@ export class WorkExperienceComponent implements OnInit {
       company: [ null, Validators.required ],
       position: [ null, Validators.required ],
       shortDescription: [ null, Validators.required ],
-      startTime: [ null, Validators.required ],
-      endTime: '',
+      startDay: [ null, Validators.required ],
+      startMonth: [ null, Validators.required ],
+      startYear: [ null, Validators.required ],
+      endDay: [ null ],
+      endMonth: [ null ],
+      endYear: [ null ],
       achievements: this.fBuilder.array([])
     })
   }
@@ -43,8 +58,12 @@ export class WorkExperienceComponent implements OnInit {
   newAchivements():FormGroup {
     return this.fBuilder.group({
       Position: [ null, Validators.required ],
-      start: [ null, Validators.required ],
-      end: ''
+      startDay: [ null, Validators.required ],
+      startMonth: [ null, Validators.required ],
+      startYear: [ null, Validators.required ],
+      endDay: [ null ],
+      endMonth: [ null ],
+      endYear: [ null ]
     })
   }
 

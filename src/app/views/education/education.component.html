@@ -33,13 +33,13 @@
                         </mat-form-field>
                     </section>
                     <!-- information on the study period -->
-                    <section class="N2-SEC" [formGroupName]="date">
-                        <h3>დაბადების თარიღი</h3>
+                    <section class="N2-SEC">
+                        <h3>სწავლის დაწყების თარიღი</h3>
                         <section>
                           <mat-form-field appearance="fill">
                             <mat-label>დღე</mat-label>
                             <mat-select disableRipple
-                            formControlName="day">
+                            formControlName="startDay">
                               <mat-option *ngFor="let num of date.day"
                               [value]="num">
                               {{num}}
@@ -50,7 +50,7 @@
                           <mat-form-field appearance="fill">
                             <mat-label>თვე</mat-label>
                             <mat-select disableRipple
-                            formControlName="month">
+                            formControlName="startMonth">
                               <mat-option *ngFor="let month of date.month"
                               [value]="month">
                               {{month}}
@@ -61,7 +61,38 @@
                           <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>წელი</mat-label>
                             <input matInput type="number"
-                            formControlName="year">
+                            formControlName="startYear">
+                            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                          </mat-form-field>
+                        </section>
+                        <h3>სწავლის დამთავრების თარიღი</h3>
+                        <section>
+                          <mat-form-field appearance="fill">
+                            <mat-label>დღე</mat-label>
+                            <mat-select disableRipple
+                            formControlName="endDay">
+                              <mat-option *ngFor="let num of date.day"
+                              [value]="num">
+                              {{num}}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                          </mat-form-field>
+                          <mat-form-field appearance="fill">
+                            <mat-label>თვე</mat-label>
+                            <mat-select disableRipple
+                            formControlName="endMonth">
+                              <mat-option *ngFor="let month of date.month"
+                              [value]="month">
+                              {{month}}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error>ველის შევსება აუცილებელია!</mat-error>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>წელი</mat-label>
+                            <input matInput type="number"
+                            formControlName="endYear">
                             <mat-error>ველის შევსება აუცილებელია!</mat-error>
                           </mat-form-field>
                         </section>

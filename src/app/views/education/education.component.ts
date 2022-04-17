@@ -39,14 +39,15 @@ export class EducationComponent implements OnInit {
    }
    newEducation() {
      return this.fBuilder.group({
-       univercity_Collage: [ null, Validators.required ],
-       faculty: [ null, Validators.required ],
-       speciality: [ null, Validators.required ],
-       date: {
-         day: [ null, Validators.required ],
-         month: [null, Validators.required ],
-         year: [ null, Validators.required ]
-       }
+      univercity_Collage: [ null, Validators.required ],
+      faculty: [ null, Validators.required ],
+      speciality: [ null, Validators.required ],
+      startDay: [ null, Validators.required ],
+      startMonth: [null, Validators.required ],
+      startYear: [ null, Validators.required ],
+      endDay: [null],
+      endMonth: [null],
+      endYear: [null]
      })
    }
    
