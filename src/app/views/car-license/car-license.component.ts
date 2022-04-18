@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class CarLicenseComponent implements OnInit {
 
   constructor(
     private fBuilder:FormBuilder,
-    private firebaseData:UserDataService
+    private firebaseData:UserDataService,
+    private router:Router
     ) {
     this.license = fBuilder.group({
       AM:false,
@@ -44,6 +46,7 @@ export class CarLicenseComponent implements OnInit {
   }
   onSubmit() {
     this.firebaseData.saveUserData(this.license.value)
+    this.router.navigate(['user-data', this.firebaseData.userAllData.user])
     this.firebaseData.addUserDataInFirestore()
     this.next = true
   }

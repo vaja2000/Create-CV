@@ -24,17 +24,19 @@ export class UserDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id')
-    this.firebaseData.getUserData().subscribe((resp:any) => {
-      resp.forEach((element:any) => {
-        if(element.user === this.userId)
-        this.user = element.userData
-      });
-      for(let category in this.user[5]){
-        if(this.user[5][category] === true)
-        this.driverLicense_CATEGORY.push(category)
-      }
-      this.spinner = true
-    })
+    setTimeout(() => {
+      this.firebaseData.getUserData().subscribe((resp:any) => {
+        resp.forEach((element:any) => {
+          if(element.user === this.userId)
+          this.user = element.userData
+        });
+        for(let category in this.user[5]){
+          if(this.user[5][category] === true)
+          this.driverLicense_CATEGORY.push(category)
+        }
+        this.spinner = true
+      })
+    }, 2000);
   }
   logout() {
     this.firebaseAuth.logOut()

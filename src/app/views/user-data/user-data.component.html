@@ -20,6 +20,12 @@
             </div>
             <div>
                 <h3><mat-icon>place</mat-icon> {{user[0].address.city_municipality}}, {{user[0].address.specific_address}}</h3>
+                <h3>
+                    <mat-icon class="mat-18">celebration</mat-icon>
+                    {{user[0].dateOfBirth.day}} /
+                    {{user[0].dateOfBirth.month}} /
+                    {{user[0].dateOfBirth.year}}წ
+                </h3>
             </div>
         </section>
     </div>
@@ -44,7 +50,15 @@
                     <h5>{{education.univercity_Collage}}</h5>
                     <h5>{{education.faculty}}</h5>
                     <h5>{{education.speciality}}</h5>
-                    <h5>11/02/2020 - 11/03/2021</h5>
+                    <h5>
+                        {{education.startDay}} /
+                        {{education.startMonth}} /
+                        {{education.startYear}}
+                         - 
+                        {{education.endDay}} /
+                        {{education.endMonth}} /
+                        {{education.endYear}}
+                    </h5>
                 </section>
             </div>
         </div>
@@ -60,7 +74,17 @@
                 <section>
                     <div><h4>ორგანიზაციის დასახელება:</h4><h5>{{item.company}}</h5></div>
                     <div><h4>პოზიციის დასახელება:</h4><h5>{{item.position}}</h5></div>
-                    <div><h4>სამუშაო პერიოდი:</h4><h5>11/02/2020 - 11/03/2021</h5></div>
+                    <div>
+                        <h4>სამუშაო პერიოდი:</h4>
+                        <h5>{{item.startDay}} /
+                            {{item.startMonth}} /
+                            {{item.startYear}} 
+                            - 
+                            {{item.endDay}} /
+                            {{item.endMonth}} /
+                            {{item.endYear}}
+                        </h5>
+                    </div>
                     <div>
                         <h4>მოკლე აღწერა:</h4>
                         <span>{{item.shortDescription}}</span>
@@ -70,7 +94,18 @@
                         <div class="achievements">
                             <article *ngFor="let achievement of item.achievements">
                                 <div><h4>პოზიციის დასახელება:</h4><h5>{{achievement.Position}}</h5></div>
-                                <div><h4>სამუშაო პერიოდი:</h4><h5>11/02/2020 - 11/03/2021</h5></div>
+                                <div>
+                                    <h4>სამუშაო პერიოდი:</h4>
+                                    <h5>
+                                        {{achievement.startDay}} /
+                                        {{achievement.startMonth}} /
+                                        {{achievement.startYear}} 
+                                        - 
+                                        {{achievement.endDay}} /
+                                        {{achievement.endMonth}} /
+                                        {{achievement.endYear}}
+                                    </h5>
+                                </div>
                             </article>
                         </div>
                     </div>
@@ -127,8 +162,13 @@
                 <div class="right">
                     <h4>1. {{user[0].lastName}}</h4>
                     <h4>2. {{user[0].firstName}}</h4>
-                    <h4>3. 11/10/2000</h4>
-                    <h4>4. თბილისი, გლდანი ა მიკრო</h4>
+                    <h4>
+                        3.
+                        {{user[0].dateOfBirth.day}} /
+                        {{user[0].dateOfBirth.month}} /
+                        {{user[0].dateOfBirth.year}}წ
+                    </h4>
+                    <h4>4. {{user[0].address.city_municipality}}, {{user[0].address.specific_address}}</h4>
                     <h4>5. 
                         <span *ngFor="let item of driverLicense_CATEGORY">{{item}}</span>
                     </h4>
